@@ -110,3 +110,51 @@ Passo 7: Enviar a branch para o servidor remoto (Push!)
 git push -u origin feature/estrutura-testes
 
 💡 Dica de QA: Sempre que fechar o terminal e voltar a estudar no dia seguinte, lembre-se de reativar o ambiente virtual na pasta do projeto executando o comando do Passo 3 da Parte 1: source .venv/bin/activate.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+# SAP Robot Automation Setup - Guia do Ambiente
+
+Este repositório contém a infraestrutura inicial e o histórico de configuração para o ambiente de automação de testes SAP e Web utilizando o Robot Framework.
+
+---
+
+## 1. Estrutura Inicial do Repositório
+
+O projeto foi iniciado com a seguinte organização de arquivos fundamentais:
+
+* `.gitignore`: Configurado para omitir arquivos de log do Robot Framework (`log.html`, `report.html`, `output.xml`) e pastas virtuais do Python (`.venv/`).
+* `README.md`: Documentação principal de controle de versão e setup.
+
+---
+
+## 2. Histórico de Comandos e Configuração do Git
+
+Abaixo está o registro dos comandos executados para inicialização do repositório local, correção de rotas remotas e sincronização com o GitHub via HTTPS utilizando autenticação segura por token (PAT):
+
+| Comando Executado | Objetivo e Descrição Técnica |
+| :--- | :--- |
+| `git config --global user.email "..."`<br>`git config --global user.name "..."` | Identificação global do autor no ambiente Git local para permitir a assinatura de commits. |
+| `git commit -m "chore: setup inicial..."` | Geração do primeiro ponto de salvamento oficial (root-commit) na branch principal. |
+| `git checkout -b feature/estrutura-testes` | Criação e alternância para a branch dedicada ao desenvolvimento da estrutura de testes, seguindo as boas práticas do Git Flow. |
+| `git remote remove origin` | Remoção de referências remotas incorretas (links genéricos salvos por engano). |
+| `git remote add origin https://github.com/...` | Vinculação definitiva do repositório local ao endereço correto do repositório remoto no GitHub via HTTPS. |
+| `git remote -v` | Validação e checagem detalhada (verbose) das URLs de *fetch* e *push* configuradas. |
+| `git push -u origin feature/estrutura-testes` | Envio da branch de trabalho local e seus respectivos commits para o servidor remoto do GitHub. |
+
+---
+
+## 3. Fluxo de Autenticação Segura (GitHub PAT)
+
+Devido à descontinuação da autenticação por senhas comuns via terminal no GitHub, o acesso foi estabelecido através de um **Personal Access Token (Classic)**:
+
+1. Navegação até a seção interna de segurança em *Developer Settings > Personal Access Tokens > Tokens (classic)*.
+2. Criação de token dedicado com escopo restrito ao escopo `repo` (controle total de repositórios privados e públicos).
+3. Utilização do hash criptográfico gerado no campo `Password` diretamente no fluxo de autenticação do terminal Linux.
+
+---
+
+## 4. Próximos Passos do Projeto
+
+* Construção dos arquivos de teste estruturados (`.robot`) na pasta correspondente.
+* Mapeamento das Keywords e Variáveis de ambiente para o fluxo SAP/Web.
